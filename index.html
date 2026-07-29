@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="JEVECO - Specialist in carcleaning en terrasreiniging. Professionele reiniging voor voertuigen en terrassen. Vraag vandaag nog uw offerte aan.">
+<meta name="keywords" content="carcleaning, terrasreiniging, auto poetsen, terras reinigen, JEVECO">
+<meta name="author" content="JEVECO">
+
+<title>JEVECO | Carcleaning & Terrasreiniging</title>
+
+https://fonts.googleapis.com
+@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --green-dark:#1a6f33;
+    --green:#3dad4c;
+    --green-light:#8bd98c;
+    --white:#ffffff;
+    --dark:#222;
+    --gray:#f5f7f5;
+    --text:#4c4c4c;
+    --shadow:0 10px 30px rgba(0,0,0,0.08);
+    --radius:18px;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Outfit',sans-serif;
+    color:var(--text);
+    line-height:1.6;
+    background:white;
+}
+
+img{
+    max-width:100%;
+    display:block;
+}
+
+.container{
+    width:min(1200px,90%);
+    margin:auto;
+}
+
+section{
+    padding:90px 0;
+}
+
+h1,h2,h3{
+    color:var(--dark);
+}
+
+h2{
+    font-size:clamp(2rem,4vw,3rem);
+    margin-bottom:20px;
+}
+
+.section-header{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.btn{
+    display:inline-block;
+    background:var(--green);
+    color:white;
+    padding:16px 32px;
+    border-radius:50px;
+    text-decoration:none;
+    font-weight:600;
+    transition:.3s;
+    border:none;
+    cursor:pointer;
+}
+
+.btn:hover{
+    background:var(--green-dark);
+    transform:translateY(-3px);
+}
+
+header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:999;
+    background:rgba(255,255,255,.96);
+    backdrop-filter:blur(10px);
+    box-shadow:0 2px 12px rgba(0,0,0,.05);
+}
+
+.navbar{
+    height:80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo img{
+    height:55px;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    color:var(--dark);
+    font-weight:500;
+}
+
+nav a:hover{
+    color:var(--green);
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    color:white;
+    text-align:center;
+    overflow:hidden;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(rgba(19,42,20,.55),rgba(19,42,20,.65)),
+    url("images/hero.jpg") center/cover;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+    max-width:850px;
+    margin:auto;
+    padding-top:80px;
+}
+
+.hero h1{
+    color:white;
+    font-size:clamp(2.5rem,7vw,5rem);
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:1.2rem;
+    margin-bottom:35px;
+}
+
+.hero .btn{
+    font-size:1.1rem;
+}
+
+.services{
+    background:var(--gray);
+}
+
+.service-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:white;
+    padding:35px;
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card h3{
+    margin-bottom:20px;
+    color:var(--green-dark);
+}
+
+.card ul{
+    padding-left:18px;
+}
+
+.card li{
+    margin-bottom:12px;
+}
+
+.why-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.why-item{
+    background:white;
+    border-left:5px solid var(--green);
+    padding:25px;
+    border-radius:12px;
+    box-shadow:var(--shadow);
+}
+
+.gallery{
+    background:var(--gray);
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:20px;
+}
+
+.gallery-item{
+    overflow:hidden;
+    border-radius:16px;
+    cursor:pointer;
+}
+
+.gallery-item img{
+    height:280px;
+    width:100%;
+    object-fit:cover;
+    transition:.4s;
+}
+
+.gallery-item:hover img{
+    transform:scale(1.08);
+}
+
+.reviews-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.review{
+    background:white;
+    padding:30px;
+    border-radius:16px;
+    box-shadow:var(--shadow);
+}
+
+.stars{
+    color:#ffc107;
+    margin-bottom:15px;
+    font-size:1.2rem;
+}
+
+.contact{
+    background:linear-gradient(135deg,#eff8ef,#ffffff);
+}
+
+.form-wrapper{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:start;
+}
+
+.contact-info{
+    padding-right:20px;
+}
+
+.contact-info p{
+    margin-bottom:20px;
+}
+
+.form-card{
+    background:white;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:var(--shadow);
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-weight:500;
+}
+
+input,
+select,
+textarea{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    font-family:inherit;
+}
+
+textarea{
+    resize:vertical;
+    min-height:120px;
+}
+
+.footer{
+    background:#1d1d1d;
+    color:white;
+    padding:60px 0 30px;
+}
+
+.footer-content{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:40px;
+}
+
+.footer img{
+    height:65px;
+    margin-bottom:20px;
+}
+
+.footer a{
+    color:white;
+    text-decoration:none;
+}
+
+.copyright{
+    text-align:center;
+    margin-top:40px;
+    opacity:0.7;
+}
+
+.lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.92);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+    padding:20px;
+}
+
+.lightbox img{
+    max-width:90%;
+    max-height:90%;
+    border-radius:10px;
+}
+
+.reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+.mobile-toggle{
+    display:none;
+}
+
+@media(max-width:850px){
+
+    nav ul{
+        position:fixed;
+        top:80px;
+        right:-100%;
+        width:260px;
+        height:calc(100vh - 80px);
+        background:white;
+        flex-direction:column;
+        padding:30px;
+        transition:.4s;
+    }
+
+    nav ul.active{
+        right:0;
+    }
+
+    .mobile-toggle{
+        display:block;
+        font-size:28px;
+        cursor:pointer;
+    }
+
+    .form-wrapper,
+    .footer-content{
+        grid-template-columns:1fr;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="container navbar">
+
+<div class="logo">
+    <!-- Vervang logo.png door jouw geüploade logo -->
+    logo.png
+</div>
+
+<nav>
+<ul id="menu">
+<li>#home</li>
+<li>cleaning">Carcleaning</a></li>
+<li>#terras</li>
+<li>#referenties</li>
+<li>#contact</li>
+</ul>
+</nav>
+
+<div class="mobile-toggle" onclick="toggleMenu()">☰</div>
+
+</div>
+</header>
+
+<section class="hero" id="home">
+<div class="container hero-content">
+
+<h1>Uw specialist in carcleaning en terrasreiniging</h1>
+
+<p>
+Professionele reiniging met oog voor detail.
+JEVECO helpt particulieren en bedrijven om voertuigen en terrassen opnieuw in topconditie te brengen.
+</p>
+
+#contact">Vraag direct een offerte aan</a>
+
+</div>
+</section>
+
+<section class="services reveal">
+
+<div class="container">
+
+<div class="section-header">
+<h2>Onze Diensten</h2>
+<p>Vakmanschap, correcte prijzen en een persoonlijke aanpak.</p>
+</div>
+
+<div class="service-grid">
+
+<div class="card" id="carcleaning">
+<h3>Carcleaning</h3>
+<ul>
+<li>Interieurreiniging</li>
+<li>Exterieurreiniging</li>
+<li>Professionele afwerking</li>
+<li>Verzorgde uitstraling van uw voertuig</li>
+</ul>
+</div>
+
+<div class="card" id="terras">
+<h3>Terrasreiniging</h3>
+<ul>
+<li>Verwijderen van vuil en mos</li>
+<li>Dieptereiniging</li>
+<li>Groene aanslag verwijderen</li>
+<li>Herstel van frisse uitstraling</li>
+</ul>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="reveal">
+
+<div class="container">
+
+<div class="section-header">
+<h2>Waarom kiezen voor JEVECO?</h2>
+</div>
+
+<div class="why-grid">
+
+<div class="why-item">Professionele service</div>
+<div class="why-item">Snelle reactie</div>
+<div class="why-item">Correcte prijzen</div>
+<div class="why-item">Kwaliteitsgarantie</div>
+<div class="why-item">Tevreden klanten</div>
+
+</div>
+
+</div>
+</section>
+
+<section class="gallery reveal">
+
+<div class="container">
+
+<div class="section-header">
+<h2>Resultaten Waar We Trots Op Zijn</h2>
+<p>Voeg hier jouw eigen foto's toe vanuit Instagram of uploads.</p>
+</div>
+
+<div class="gallery-grid">
+
+<div class="gallery-item">
+images/foto1.jpg="lazy" alt="JEVECO resultaat" onclick="openLightbox(this.src)">
+</div>
+
+<div class="gallery-item">
+images/foto2.jpg
+</div>
+
+<div class="gallery-item">
+images/foto3.jpgVECO resultaat" onclick="openLightbox(this.src)">
+</div>
+
+<div class="gallery-item">
+images/foto4.jpg="openLightbox(this.src)">
+</div>
+
+<div class="gallery-item">
+images/foto5.jpg
+</div>
+
+<div class="gallery-item">
+images/foto6.jpg" alt="JEVECO resultaat" onclick="openLightbox(this.src)">
+</div>
+
+</div>
+</div>
+</section>
+
+<section id="referenties" class="reveal">
+
+<div class="container">
+
+<div class="section-header">
+<h2>Wat Klanten Zeggen</h2>
+</div>
+
+<div class="reviews-grid">
+
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>
+"Zeer tevreden over het resultaat. Auto zag er opnieuw als nieuw uit."
+</p>
+<br>
+<strong>Particuliere klant</strong>
+</div>
+
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>
+"Snelle communicatie, correcte prijs en uitstekend werk."
+</p>
+<br>
+<strong>Klant terrasreiniging</strong>
+</div>
+
+<div class="review">
+<div class="stars">★★★★★</div>
+<p>
+"Professionele aanpak en perfect afgewerkt."
+</p>
+<br>
+<strong>Tevreden klant</strong>
+</div>
+
+</div>
+</div>
+</section>
+
+<section class="contact reveal" id="contact">
+
+<div class="container">
+
+<div class="section-header">
+<h2>Vraag Uw Offerte Aan</h2>
+</div>
+
+<div class="form-wrapper">
+
+<div class="contact-info">
+
+<h3>Persoonlijke service, zonder gedoe.</h3>
+
+<p>
+Heeft u een wagen die een grondige reiniging nodig heeft?
+Of wilt u uw terras opnieuw laten stralen?
+Vraag vrijblijvend een offerte aan via WhatsApp.
+</p>
+
+<p><strong>Reactie binnen korte tijd</strong></p>
+
+</div>
+
+<div class="form-card">
+
+<form id="quoteForm">
+
+<div class="form-group">
+<label for="naam">Naam</label>
+<input type="text" id="naam" required>
+</div>
+
+<div class="form-group">
+<label for="gsm">GSM nummer</label>
+<input type="tel" id="gsm" required>
+</div>
+
+<div class="form-group">
+<label for="dienst">Dienst</label>
+<select id="dienst" required>
+<option value="">Selecteer</option>
+<option>Carcleaning</option>
+<option>Terrasreiniging</option>
+</select>
+</div>
+
+<div class="form-group" id="sqmField" style="display:none;">
+<label for="sqm">Aantal vierkante meter</label>
+<input type="number" id="sqm">
+</div>
+
+<div class="form-group">
+<label for="opmerking">Opmerking</label>
+<textarea id="opmerking"></textarea>
+</div>
+
+<button type="submit" class="btn" style="width:100%;">
+Verzenden via WhatsApp
+</button>
+
+</form>
+
+</div>
+
+</div>
+</div>
+
+</section>
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="footer-content">
+
+<div>
+logo.png
+<p>
+JEVECO staat voor grondige reiniging, correcte prijzen en een persoonlijke aanpak.
+</p>
+</div>
+
+<div>
+<p><strong>Telefoon</strong><br>+32 xxx xx xx xx</p>
+<br>
+<p><strong>E-mail</strong><br>info@jeveco.be</p>
+<br>
+#="footerWhatsapp">WhatsApp</a>
+</div>
+
+</div>
+
+<div class="copyright">
+© 2026 JEVECO. Alle rechten voorbehouden.
+</div>
+
+</div>
+
+</footer>
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+
+</div>
+
+<script>
+
+const whatsappNumber = "324XXXXXXXX";
+
+function toggleMenu(){
+    document.getElementById("menu").classList.toggle("active");
+}
+
+document.getElementById("dienst").addEventListener("change", function(){
+    
+    const sqmField = document.getElementById("sqmField");
+
+    if(this.value === "Terrasreiniging"){
+        sqmField.style.display = "block";
+    } else {
+        sqmField.style.display = "none";
+    }
+});
+
+document.getElementById("quoteForm").addEventListener("submit", function(e){
+
+    e.preventDefault();
+
+    const naam = document.getElementById("naam").value;
+    const gsm = document.getElementById("gsm").value;
+    const dienst = document.getElementById("dienst").value;
+    const sqm = document.getElementById("sqm").value;
+    const opmerking = document.getElementById("opmerking").value;
+
+    let message =
+`Nieuwe offerte aanvraag JEVECO
+
+Naam: ${naam}
+GSM: ${gsm}
+
+Dienst: ${dienst}`;
+
+    if(dienst === "Terrasreiniging" && sqm){
+        message += `
+
+Vierkante meter: ${sqm} m²`;
+    }
+
+    message += `
+
+Opmerking:
+${opmerking}`;
+
+    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+    window.open(url, "_blank");
+
+});
+
+document.getElementById("footerWhatsapp").addEventListener("click", function(e){
+
+    e.preventDefault();
+
+    window.open(
+        `https://wa.me/${whatsappNumber}`,
+        "_blank"
+    );
+});
+
+function openLightbox(src){
+    document.getElementById("lightbox").style.display="flex";
+    document.getElementById("lightboxImg").src=src;
+}
+
+function closeLightbox(){
+    document.getElementById("lightbox").style.display="none";
+}
+
+const observer = new IntersectionObserver(entries => {
+
+entries.forEach(entry => {
+
+if(entry.isIntersecting){
+entry.target.classList.add("active");
+}
+
+});
+
+},{threshold:0.15});
+
+document.querySelectorAll('.reveal').forEach(el=>{
+observer.observe(el);
+});
+
+</script>
+
+</body>
+</html>
