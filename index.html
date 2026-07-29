@@ -1,784 +1,987 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="nl-BE">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="JEVECO - Specialist in carcleaning en terrasreiniging. Professionele reiniging voor voertuigen en terrassen. Vraag vandaag nog uw offerte aan.">
-<meta name="keywords" content="carcleaning, terrasreiniging, auto poetsen, terras reinigen, JEVECO">
-<meta name="author" content="JEVECO">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>JEVECO | Carcleaning &amp; terrasreiniging</title>
+<meta name="description" content="JEVECO reinigt uw wagen van binnen en van buiten en maakt uw terras opnieuw fris. Vakwerk van een zelfstandige, correcte prijzen, snelle offerte via WhatsApp.">
+<meta name="theme-color" content="#1B3A2A">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.jeveco.be/">
 
-<title>JEVECO | Carcleaning & Terrasreiniging</title>
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_BE">
+<meta property="og:title" content="JEVECO | Carcleaning &amp; terrasreiniging">
+<meta property="og:description" content="Uw specialist in carcleaning en terrasreiniging. Vraag vandaag nog een offerte aan.">
+<meta property="og:image" content="images/hero.jpg">
 
-https://fonts.googleapis.com
-@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Fonts (met system-fallback, de site werkt ook zonder internet) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-
+/* ============================================================
+   1. TOKENS
+   ============================================================ */
 :root{
-    --green-dark:#1a6f33;
-    --green:#3dad4c;
-    --green-light:#8bd98c;
-    --white:#ffffff;
-    --dark:#222;
-    --gray:#f5f7f5;
-    --text:#4c4c4c;
-    --shadow:0 10px 30px rgba(0,0,0,0.08);
-    --radius:18px;
+  --ink:#16251C;          /* donkergrijs-groen, hoofdtekst */
+  --ink-soft:#5C6A61;     /* secundaire tekst */
+  --pine:#1B3A2A;         /* diep merkgroen */
+  --moss:#3C7A55;         /* midden groen */
+  --lime:#9BC53D;         /* accent: fris, "proper" groen */
+  --lime-deep:#7FA82F;
+  --paper:#F5F7F2;        /* gebroken wit met groene inslag */
+  --white:#FFFFFF;
+  --line:#DEE5DA;
+
+  --shell:min(1180px, 100% - 3rem);
+  --r:14px;
+
+  --font-display:'Bricolage Grotesque','Segoe UI',Tahoma,sans-serif;
+  --font-body:'Instrument Sans','Segoe UI',Helvetica,Arial,sans-serif;
+
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --header-h:74px;
 }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
+/* ============================================================
+   2. BASIS
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 12px);-webkit-text-size-adjust:100%}
 body{
-    font-family:'Outfit',sans-serif;
-    color:var(--text);
-    line-height:1.6;
-    background:white;
+  margin:0;background:var(--white);color:var(--ink);
+  font-family:var(--font-body);font-size:17px;line-height:1.65;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
 }
+img{max-width:100%;display:block}
+a{color:inherit}
+button,input,select,textarea{font:inherit;color:inherit}
 
-img{
-    max-width:100%;
-    display:block;
+h1,h2,h3{font-family:var(--font-display);font-weight:800;line-height:1.05;letter-spacing:-.025em;margin:0}
+h1{font-size:clamp(2.3rem,6.2vw,4.3rem)}
+h2{font-size:clamp(1.9rem,4.4vw,3.1rem)}
+h3{font-size:clamp(1.15rem,2.2vw,1.5rem);font-weight:700;letter-spacing:-.015em}
+p{margin:0 0 1rem}
+
+.shell{width:var(--shell);margin-inline:auto}
+.section{padding:clamp(64px,9vw,120px) 0}
+.section--paper{background:var(--paper)}
+.section--pine{background:var(--pine);color:var(--white)}
+
+.eyebrow{
+  font-family:var(--font-body);font-size:.78rem;font-weight:600;
+  letter-spacing:.19em;text-transform:uppercase;color:var(--moss);
+  margin:0 0 .9rem;display:flex;align-items:center;gap:.65rem;
 }
+.eyebrow::before{content:"";width:26px;height:2px;background:var(--lime);flex:none}
+.section--pine .eyebrow{color:var(--lime)}
+.lead{font-size:clamp(1.02rem,1.5vw,1.16rem);color:var(--ink-soft);max-width:60ch}
+.section--pine .lead{color:#C9D8CD}
 
-.container{
-    width:min(1200px,90%);
-    margin:auto;
-}
+.skip{position:absolute;left:-9999px;top:0;background:var(--pine);color:#fff;padding:.8rem 1.2rem;z-index:200}
+.skip:focus{left:12px;top:12px}
 
-section{
-    padding:90px 0;
-}
+:focus-visible{outline:3px solid var(--lime-deep);outline-offset:3px;border-radius:4px}
 
-h1,h2,h3{
-    color:var(--dark);
-}
-
-h2{
-    font-size:clamp(2rem,4vw,3rem);
-    margin-bottom:20px;
-}
-
-.section-header{
-    text-align:center;
-    margin-bottom:50px;
-}
-
+/* ============================================================
+   3. KNOPPEN
+   ============================================================ */
 .btn{
-    display:inline-block;
-    background:var(--green);
-    color:white;
-    padding:16px 32px;
-    border-radius:50px;
-    text-decoration:none;
-    font-weight:600;
-    transition:.3s;
-    border:none;
-    cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  padding:1.05rem 1.9rem;border-radius:999px;border:2px solid transparent;
+  font-family:var(--font-display);font-weight:700;font-size:1.02rem;letter-spacing:-.01em;
+  text-decoration:none;cursor:pointer;text-align:center;
+  transition:transform .18s var(--ease),background .18s var(--ease),color .18s var(--ease),border-color .18s var(--ease),box-shadow .18s var(--ease);
+  min-height:52px;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:translateY(0)}
+.btn--primary{background:var(--lime);color:var(--pine);box-shadow:0 8px 22px rgba(27,58,42,.22)}
+.btn--primary:hover{background:var(--lime-deep);color:#fff}
+.btn--dark{background:var(--pine);color:#fff}
+.btn--dark:hover{background:var(--moss)}
+.btn--ghost{background:transparent;color:var(--pine);border-color:var(--line)}
+.btn--ghost:hover{border-color:var(--pine);background:var(--pine);color:#fff}
+.btn--onpine{background:transparent;color:#fff;border-color:rgba(255,255,255,.4)}
+.btn--onpine:hover{background:#fff;color:var(--pine);border-color:#fff}
+.btn--block{width:100%}
+.btn--lg{padding:1.2rem 2.3rem;font-size:1.1rem;min-height:60px}
+
+/* ============================================================
+   4. HEADER
+   ============================================================ */
+.header{
+  position:sticky;top:0;z-index:90;background:rgba(255,255,255,.92);
+  backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);transition:box-shadow .25s var(--ease);
+}
+.header.is-stuck{box-shadow:0 6px 26px rgba(22,37,28,.09)}
+.header__inner{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:var(--header-h)}
+
+.brand{display:inline-flex;align-items:baseline;gap:.06em;text-decoration:none;font-family:var(--font-display);font-weight:800;font-size:1.5rem;letter-spacing:.02em;color:var(--pine);text-transform:uppercase}
+.brand__dot{color:var(--lime-deep)}
+.brand__logo{height:40px;width:auto;display:none}
+.brand.has-logo .brand__word,.brand.has-logo .brand__dot{display:none}
+.brand.has-logo .brand__logo{display:block}
+
+.nav{display:flex;align-items:center;gap:.35rem}
+.nav a{
+  text-decoration:none;font-weight:500;font-size:.97rem;padding:.55rem .8rem;border-radius:8px;
+  color:var(--ink);transition:color .15s,background .15s;
+}
+.nav a:hover{color:var(--pine);background:var(--paper)}
+.nav a.is-active{color:var(--pine);font-weight:600}
+.header .btn{padding:.75rem 1.35rem;font-size:.95rem;min-height:44px}
+
+.burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;width:46px;height:46px;cursor:pointer;padding:0;place-items:center}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);margin:4px auto;transition:transform .25s var(--ease),opacity .2s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+@media (max-width:940px){
+  .burger{display:grid}
+  .nav{
+    position:fixed;inset:var(--header-h) 0 auto 0;background:var(--white);
+    flex-direction:column;align-items:stretch;gap:0;padding:.5rem 1.5rem 1.5rem;
+    border-bottom:1px solid var(--line);box-shadow:0 20px 40px rgba(22,37,28,.12);
+    transform:translateY(-120%);transition:transform .32s var(--ease);
+  }
+  .nav.is-open{transform:translateY(0)}
+  .nav a{padding:1rem .4rem;border-bottom:1px solid var(--line);border-radius:0;font-size:1.05rem}
+  .nav .btn{margin-top:1rem;border-bottom:0}
+  .header__cta{display:none}
 }
 
-.btn:hover{
-    background:var(--green-dark);
-    transform:translateY(-3px);
+/* ============================================================
+   5. HERO
+   ============================================================ */
+.hero{position:relative;background:var(--pine);color:#fff;overflow:hidden;isolation:isolate}
+.hero__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.hero::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(105deg,rgba(16,38,26,.95) 0%,rgba(16,38,26,.86) 42%,rgba(16,38,26,.55) 100%);
+}
+.hero__inner{padding:clamp(78px,13vw,150px) 0 clamp(64px,9vw,110px);max-width:750px}
+.hero h1{color:#fff;text-wrap:balance}
+.hero h1 em{font-style:normal;color:var(--lime)}
+.hero__text{margin:1.6rem 0 2.4rem;font-size:clamp(1.05rem,1.7vw,1.22rem);color:#D3E0D6;max-width:52ch}
+.hero__actions{display:flex;flex-wrap:wrap;gap:.9rem}
+.hero__badges{display:flex;flex-wrap:wrap;gap:.6rem 2rem;margin-top:3rem;padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.18);font-size:.9rem;color:#C9D8CD}
+.hero__badges span{display:flex;align-items:center;gap:.5rem}
+.hero__badges span::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--lime);flex:none}
+
+/* ============================================================
+   6. DIENSTEN  (het onderscheid = het hart van de pagina)
+   ============================================================ */
+.services{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,34px);margin-top:3.2rem}
+@media (max-width:820px){.services{grid-template-columns:1fr}}
+
+.service{
+  display:flex;flex-direction:column;background:var(--white);
+  border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease),border-color .3s var(--ease);
+}
+.service:hover{transform:translateY(-6px);box-shadow:0 24px 48px rgba(22,37,28,.13);border-color:transparent}
+.service__media{position:relative;aspect-ratio:16/10;overflow:hidden;background:var(--paper)}
+.service__media img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.service:hover .service__media img{transform:scale(1.05)}
+.service__tag{
+  position:absolute;left:0;bottom:0;padding:.55rem 1.15rem;
+  font-family:var(--font-display);font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;
+  background:var(--pine);color:#fff;
+}
+.service--terras .service__tag{background:var(--lime);color:var(--pine)}
+.service__body{padding:clamp(1.6rem,3vw,2.3rem);display:flex;flex-direction:column;flex:1}
+.service__body p{color:var(--ink-soft);margin-top:.7rem}
+.service ul{list-style:none;margin:1.4rem 0 2rem;padding:0;display:grid;gap:.75rem}
+.service li{display:flex;gap:.85rem;align-items:flex-start;font-size:1rem}
+.service li::before{content:"";width:9px;height:9px;margin-top:.55rem;flex:none;background:var(--lime);border-radius:2px}
+.service--car li::before{background:var(--moss)}
+.service .btn{margin-top:auto}
+
+/* ============================================================
+   7. VOOR / NA
+   ============================================================ */
+.ba-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(20px,3vw,34px);margin-top:3rem}
+@media (max-width:820px){.ba-grid{grid-template-columns:1fr}}
+.ba-item h3{margin-bottom:1rem;color:#fff}
+.ba{
+  position:relative;aspect-ratio:4/3;border-radius:var(--r);overflow:hidden;
+  background:#0F2419;touch-action:pan-y;user-select:none;
+}
+.ba img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ba__before{position:absolute;inset:0;clip-path:inset(0 calc(100% - var(--pos,50%)) 0 0)}
+.ba__label{
+  position:absolute;top:.9rem;padding:.35rem .8rem;border-radius:999px;
+  font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;z-index:3;pointer-events:none;
+}
+.ba__label--before{left:.9rem;background:rgba(16,38,26,.82);color:#fff}
+.ba__label--after{right:.9rem;background:var(--lime);color:var(--pine)}
+.ba__line{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:3px;background:#fff;transform:translateX(-50%);z-index:4;pointer-events:none;box-shadow:0 0 14px rgba(0,0,0,.4)}
+.ba__grip{
+  position:absolute;top:50%;left:var(--pos,50%);transform:translate(-50%,-50%);z-index:5;pointer-events:none;
+  width:46px;height:46px;border-radius:50%;background:#fff;display:grid;place-items:center;
+  font-family:var(--font-display);font-weight:800;color:var(--pine);font-size:.9rem;box-shadow:0 4px 18px rgba(0,0,0,.35);
+}
+.ba__range{
+  position:absolute;inset:0;width:100%;height:100%;margin:0;z-index:6;
+  opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none;background:transparent;
+}
+.ba__range::-webkit-slider-thumb{-webkit-appearance:none;width:52px;height:100%}
+.ba__range::-moz-range-thumb{width:52px;height:100%;border:0;opacity:0}
+.ba__range:focus-visible+.ba__line{background:var(--lime);width:5px}
+
+/* ============================================================
+   8. WAAROM
+   ============================================================ */
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:clamp(18px,2.6vw,30px);margin-top:3rem}
+.why__item{padding-top:1.3rem;border-top:3px solid var(--lime)}
+.why__item:nth-child(even){border-top-color:var(--moss)}
+.why__item h3{font-size:1.1rem;margin-bottom:.5rem}
+.why__item p{font-size:.97rem;color:var(--ink-soft);margin:0}
+
+/* ============================================================
+   9. GALERIJ
+   ============================================================ */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:3rem}
+.gallery__cell{
+  position:relative;padding:0;border:0;background:var(--pine);cursor:zoom-in;
+  border-radius:10px;overflow:hidden;aspect-ratio:1/1;
+}
+.gallery__cell:nth-child(1),.gallery__cell:nth-child(6){grid-column:span 2;grid-row:span 2;aspect-ratio:1/1}
+.gallery__cell img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease),opacity .3s}
+.gallery__cell:hover img{transform:scale(1.06);opacity:.82}
+@media (max-width:820px){
+  .gallery{grid-template-columns:repeat(2,1fr)}
+  .gallery__cell:nth-child(1),.gallery__cell:nth-child(6){grid-column:span 2;grid-row:auto;aspect-ratio:16/10}
 }
 
-header{
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    z-index:999;
-    background:rgba(255,255,255,.96);
-    backdrop-filter:blur(10px);
-    box-shadow:0 2px 12px rgba(0,0,0,.05);
-}
-
-.navbar{
-    height:80px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.logo img{
-    height:55px;
-}
-
-nav ul{
-    list-style:none;
-    display:flex;
-    gap:30px;
-}
-
-nav a{
-    text-decoration:none;
-    color:var(--dark);
-    font-weight:500;
-}
-
-nav a:hover{
-    color:var(--green);
-}
-
-.hero{
-    min-height:100vh;
-    display:flex;
-    align-items:center;
-    position:relative;
-    color:white;
-    text-align:center;
-    overflow:hidden;
-}
-
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:0;
-    background:
-    linear-gradient(rgba(19,42,20,.55),rgba(19,42,20,.65)),
-    url("images/hero.jpg") center/cover;
-}
-
-.hero-content{
-    position:relative;
-    z-index:2;
-    max-width:850px;
-    margin:auto;
-    padding-top:80px;
-}
-
-.hero h1{
-    color:white;
-    font-size:clamp(2.5rem,7vw,5rem);
-    margin-bottom:20px;
-}
-
-.hero p{
-    font-size:1.2rem;
-    margin-bottom:35px;
-}
-
-.hero .btn{
-    font-size:1.1rem;
-}
-
-.services{
-    background:var(--gray);
-}
-
-.service-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:30px;
-}
-
-.card{
-    background:white;
-    padding:35px;
-    border-radius:var(--radius);
-    box-shadow:var(--shadow);
-    transition:.3s;
-}
-
-.card:hover{
-    transform:translateY(-8px);
-}
-
-.card h3{
-    margin-bottom:20px;
-    color:var(--green-dark);
-}
-
-.card ul{
-    padding-left:18px;
-}
-
-.card li{
-    margin-bottom:12px;
-}
-
-.why-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-}
-
-.why-item{
-    background:white;
-    border-left:5px solid var(--green);
-    padding:25px;
-    border-radius:12px;
-    box-shadow:var(--shadow);
-}
-
-.gallery{
-    background:var(--gray);
-}
-
-.gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:20px;
-}
-
-.gallery-item{
-    overflow:hidden;
-    border-radius:16px;
-    cursor:pointer;
-}
-
-.gallery-item img{
-    height:280px;
-    width:100%;
-    object-fit:cover;
-    transition:.4s;
-}
-
-.gallery-item:hover img{
-    transform:scale(1.08);
-}
-
-.reviews-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:25px;
-}
-
-.review{
-    background:white;
-    padding:30px;
-    border-radius:16px;
-    box-shadow:var(--shadow);
-}
-
-.stars{
-    color:#ffc107;
-    margin-bottom:15px;
-    font-size:1.2rem;
-}
-
-.contact{
-    background:linear-gradient(135deg,#eff8ef,#ffffff);
-}
-
-.form-wrapper{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-    align-items:start;
-}
-
-.contact-info{
-    padding-right:20px;
-}
-
-.contact-info p{
-    margin-bottom:20px;
-}
-
-.form-card{
-    background:white;
-    padding:35px;
-    border-radius:20px;
-    box-shadow:var(--shadow);
-}
-
-.form-group{
-    margin-bottom:18px;
-}
-
-label{
-    display:block;
-    margin-bottom:6px;
-    font-weight:500;
-}
-
-input,
-select,
-textarea{
-    width:100%;
-    padding:14px;
-    border:1px solid #ddd;
-    border-radius:10px;
-    font-family:inherit;
-}
-
-textarea{
-    resize:vertical;
-    min-height:120px;
-}
-
-.footer{
-    background:#1d1d1d;
-    color:white;
-    padding:60px 0 30px;
-}
-
-.footer-content{
-    display:grid;
-    grid-template-columns:2fr 1fr;
-    gap:40px;
-}
-
-.footer img{
-    height:65px;
-    margin-bottom:20px;
-}
-
-.footer a{
-    color:white;
-    text-decoration:none;
-}
-
-.copyright{
-    text-align:center;
-    margin-top:40px;
-    opacity:0.7;
-}
-
+/* Lightbox */
 .lightbox{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.92);
-    display:none;
-    justify-content:center;
-    align-items:center;
-    z-index:9999;
-    padding:20px;
+  position:fixed;inset:0;z-index:150;background:rgba(11,26,18,.95);
+  display:none;align-items:center;justify-content:center;padding:clamp(16px,4vw,54px);
 }
-
-.lightbox img{
-    max-width:90%;
-    max-height:90%;
-    border-radius:10px;
+.lightbox.is-open{display:flex}
+.lightbox img{max-width:100%;max-height:82vh;border-radius:10px;object-fit:contain}
+.lightbox__btn{
+  position:absolute;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);color:#fff;
+  width:52px;height:52px;border-radius:50%;cursor:pointer;font-size:1.5rem;line-height:1;
+  display:grid;place-items:center;transition:background .2s;
 }
+.lightbox__btn:hover{background:var(--lime);color:var(--pine);border-color:var(--lime)}
+.lightbox__close{top:18px;right:18px}
+.lightbox__prev{left:18px;top:50%;transform:translateY(-50%)}
+.lightbox__next{right:18px;top:50%;transform:translateY(-50%)}
+.lightbox__count{position:absolute;bottom:20px;left:50%;transform:translateX(-50%);color:#C9D8CD;font-size:.85rem;letter-spacing:.1em}
 
-.reveal{
-    opacity:0;
-    transform:translateY(40px);
-    transition:1s;
+/* ============================================================
+   10. REFERENTIES
+   ============================================================ */
+.reviews{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:clamp(18px,2.6vw,28px);margin-top:3rem}
+.review{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:clamp(1.5rem,2.6vw,2rem);display:flex;flex-direction:column;transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.review:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(22,37,28,.1)}
+.stars{color:var(--lime-deep);letter-spacing:.16em;font-size:1.05rem;margin-bottom:1rem}
+.review blockquote{margin:0 0 1.5rem;font-size:1.03rem;line-height:1.6}
+.review__who{margin-top:auto;display:flex;align-items:center;gap:.85rem;padding-top:1.2rem;border-top:1px solid var(--line)}
+.review__initial{width:42px;height:42px;border-radius:50%;background:var(--pine);color:#fff;display:grid;place-items:center;font-family:var(--font-display);font-weight:700;flex:none}
+.review__name{font-weight:600;font-size:.97rem;line-height:1.3}
+.review__meta{font-size:.85rem;color:var(--ink-soft)}
+
+/* ============================================================
+   11. OFFERTEFORMULIER
+   ============================================================ */
+.quote{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(28px,5vw,64px);align-items:start}
+@media (max-width:900px){.quote{grid-template-columns:1fr}}
+.quote__aside img{border-radius:var(--r);aspect-ratio:4/3;object-fit:cover;width:100%;margin-top:2rem}
+.quote__contactlist{list-style:none;padding:0;margin:2rem 0 0;display:grid;gap:1rem}
+.quote__contactlist a{text-decoration:none;font-weight:600;font-size:1.1rem;color:#fff;border-bottom:2px solid var(--lime);padding-bottom:2px}
+.quote__contactlist a:hover{color:var(--lime)}
+.quote__contactlist small{display:block;color:#A9BDAF;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.25rem;font-weight:600}
+
+.form{background:var(--white);border-radius:var(--r);padding:clamp(1.5rem,3.4vw,2.6rem);color:var(--ink);box-shadow:0 30px 60px rgba(8,22,14,.28)}
+.field{margin-bottom:1.25rem}
+.field label{display:block;font-weight:600;font-size:.92rem;margin-bottom:.45rem}
+.field .req{color:var(--lime-deep)}
+.field input,.field select,.field textarea{
+  width:100%;padding:.95rem 1.05rem;border:1.5px solid var(--line);border-radius:10px;
+  background:var(--white);transition:border-color .18s,box-shadow .18s;font-size:1rem;
 }
+.field textarea{min-height:110px;resize:vertical}
+.field select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--pine) 50%),linear-gradient(135deg,var(--pine) 50%,transparent 50%);background-position:calc(100% - 22px) 50%,calc(100% - 16px) 50%;background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:2.8rem}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--moss);box-shadow:0 0 0 4px rgba(155,197,61,.22)}
+.field .hint{font-size:.85rem;color:var(--ink-soft);margin:.4rem 0 0}
+.field.is-error input,.field.is-error select{border-color:#C0392B}
+.error-msg{color:#C0392B;font-size:.85rem;margin:.4rem 0 0;display:none}
+.field.is-error .error-msg{display:block}
 
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
+#veld-m2{display:none}
+#veld-m2.is-visible{display:block;animation:slideDown .3s var(--ease)}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+
+.form__note{font-size:.86rem;color:var(--ink-soft);margin:1rem 0 0;text-align:center}
+.form__status{margin:1rem 0 0;font-size:.92rem;font-weight:600;color:var(--moss);text-align:center;min-height:1.4em}
+
+/* ============================================================
+   12. FOOTER
+   ============================================================ */
+.footer{background:var(--ink);color:#B8C6BC;padding:clamp(52px,7vw,80px) 0 2rem;font-size:.96rem}
+.footer__grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:clamp(28px,4vw,56px)}
+@media (max-width:760px){.footer__grid{grid-template-columns:1fr}}
+.footer .brand{color:#fff;margin-bottom:1.1rem}
+.footer h4{font-family:var(--font-display);color:#fff;font-size:1rem;letter-spacing:.1em;text-transform:uppercase;margin:0 0 1.1rem}
+.footer ul{list-style:none;padding:0;margin:0;display:grid;gap:.7rem}
+.footer a{text-decoration:none;transition:color .15s}
+.footer a:hover{color:var(--lime)}
+.footer__bottom{margin-top:clamp(38px,5vw,58px);padding-top:1.6rem;border-top:1px solid rgba(255,255,255,.12);display:flex;flex-wrap:wrap;gap:.6rem 1.5rem;justify-content:space-between;font-size:.86rem;color:#8A9A8F}
+
+/* Zwevende WhatsApp knop */
+.fab{
+  position:fixed;right:18px;bottom:18px;z-index:80;
+  background:var(--lime);color:var(--pine);border-radius:999px;
+  padding:.9rem 1.4rem;font-family:var(--font-display);font-weight:700;font-size:.98rem;
+  text-decoration:none;box-shadow:0 10px 30px rgba(22,37,28,.3);
+  display:inline-flex;align-items:center;gap:.5rem;
+  transform:translateY(120px);transition:transform .35s var(--ease),background .2s;
 }
+.fab.is-visible{transform:translateY(0)}
+.fab:hover{background:var(--lime-deep);color:#fff}
 
-.mobile-toggle{
-    display:none;
+/* ============================================================
+   13. PLACEHOLDER voor ontbrekende foto's
+   ============================================================ */
+.img-missing{
+  display:grid;place-content:center;gap:.5rem;text-align:center;padding:1rem;
+  background:repeating-linear-gradient(135deg,#E7EDE4,#E7EDE4 12px,#DDE6D9 12px,#DDE6D9 24px);
+  color:var(--moss);font-family:var(--font-display);font-weight:700;
+  font-size:.78rem;letter-spacing:.06em;line-height:1.5;word-break:break-all;
 }
+.img-missing::before{content:"FOTO";display:block;font-size:.68rem;letter-spacing:.24em;color:var(--lime-deep)}
+.hero .img-missing,.ba .img-missing{position:absolute;inset:0;width:100%;height:100%}
+.hero .img-missing{z-index:-2}
 
-@media(max-width:850px){
+/* ============================================================
+   14. SCROLL-ANIMATIES
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.is-in{opacity:1;transform:none}
+.reveal[data-delay="1"]{transition-delay:.09s}
+.reveal[data-delay="2"]{transition-delay:.18s}
+.reveal[data-delay="3"]{transition-delay:.27s}
+.reveal[data-delay="4"]{transition-delay:.36s}
 
-    nav ul{
-        position:fixed;
-        top:80px;
-        right:-100%;
-        width:260px;
-        height:calc(100vh - 80px);
-        background:white;
-        flex-direction:column;
-        padding:30px;
-        transition:.4s;
-    }
-
-    nav ul.active{
-        right:0;
-    }
-
-    .mobile-toggle{
-        display:block;
-        font-size:28px;
-        cursor:pointer;
-    }
-
-    .form-wrapper,
-    .footer-content{
-        grid-template-columns:1fr;
-    }
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .reveal{opacity:1;transform:none}
 }
-
 </style>
 </head>
 
 <body>
+<a class="skip" href="#main">Naar de inhoud</a>
 
-<header>
-<div class="container navbar">
+<!-- ============================ HEADER ============================ -->
+<header class="header" id="top">
+  <div class="shell header__inner">
+    <a class="brand" href="#top" aria-label="JEVECO, naar boven">
+      <!-- Zet je logo als images/logo.png en het vervangt automatisch de tekst -->
+      <img class="brand__logo" src="images/logo.png" alt="JEVECO">
+      <span class="brand__word">Jeveco</span><span class="brand__dot">.</span>
+    </a>
 
-<div class="logo">
-    <!-- Vervang logo.png door jouw geüploade logo -->
-    logo.png
-</div>
+    <nav class="nav" id="nav" aria-label="Hoofdnavigatie">
+      <a href="#top">Home</a>
+      <a href="#carcleaning">Carcleaning</a>
+      <a href="#terrasreiniging">Terrasreiniging</a>
+      <a href="#referenties">Referenties</a>
+      <a href="#contact">Contact</a>
+      <a class="btn btn--primary" href="#contact">Offerte aanvragen</a>
+    </nav>
 
-<nav>
-<ul id="menu">
-<li>#home</li>
-<li>cleaning">Carcleaning</a></li>
-<li>#terras</li>
-<li>#referenties</li>
-<li>#contact</li>
-</ul>
-</nav>
+    <a class="btn btn--primary header__cta" href="#contact">Offerte aanvragen</a>
 
-<div class="mobile-toggle" onclick="toggleMenu()">☰</div>
-
-</div>
+    <button class="burger" id="burger" aria-label="Menu openen" aria-expanded="false" aria-controls="nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
 </header>
 
-<section class="hero" id="home">
-<div class="container hero-content">
+<main id="main">
 
-<h1>Uw specialist in carcleaning en terrasreiniging</h1>
-
-<p>
-Professionele reiniging met oog voor detail.
-JEVECO helpt particulieren en bedrijven om voertuigen en terrassen opnieuw in topconditie te brengen.
-</p>
-
-#contact">Vraag direct een offerte aan</a>
-
-</div>
+<!-- ============================ HERO ============================ -->
+<section class="hero">
+  <img class="hero__bg" src="images/hero.jpg" alt="" fetchpriority="high" decoding="async">
+  <div class="shell hero__inner">
+    <p class="eyebrow" style="color:var(--lime)">Zelfstandig vakman &middot; particulier &amp; bedrijf</p>
+    <h1>Uw specialist in <em>carcleaning</em> en <em>terrasreiniging</em></h1>
+    <p class="hero__text">
+      Wij nemen de tijd voor het werk dat anderen overslaan. Uw wagen komt terug alsof hij
+      net uit de toonzaal rijdt, uw terras verliest zijn groene aanslag en oogt weer fris.
+      Geen verkooppraat, wel proper werk en een eerlijke prijs.
+    </p>
+    <div class="hero__actions">
+      <a class="btn btn--primary btn--lg" href="#contact">Vraag direct een offerte aan</a>
+      <a class="btn btn--onpine btn--lg" href="#diensten">Bekijk onze diensten</a>
+    </div>
+    <div class="hero__badges">
+      <span>Antwoord binnen 24 uur</span>
+      <span>Vaste prijs vooraf</span>
+      <span>Wij komen bij u ter plaatse</span>
+    </div>
+  </div>
 </section>
 
-<section class="services reveal">
+<!-- ============================ DIENSTEN ============================ -->
+<section class="section" id="diensten">
+  <div class="shell">
+    <div class="reveal">
+      <p class="eyebrow">Twee specialiteiten</p>
+      <h2>Kies waarvoor u ons nodig heeft</h2>
+      <p class="lead">Twee verschillende vakken, dezelfde aanpak: grondig werken, netjes achterlaten en vooraf duidelijk zijn over de prijs.</p>
+    </div>
 
-<div class="container">
+    <div class="services">
+      <!-- CARCLEANING -->
+      <article class="service service--car reveal" id="carcleaning" data-delay="1">
+        <div class="service__media">
+          <img src="images/carcleaning.jpg" alt="Gereinigd interieur en gepoetste lak van een wagen door JEVECO" loading="lazy" decoding="async">
+          <span class="service__tag">Carcleaning</span>
+        </div>
+        <div class="service__body">
+          <h3>Uw wagen van binnen en van buiten</h3>
+          <p>Van een grondige opfrisbeurt tot een volledige poetsbeurt voor de verkoop van uw wagen.</p>
+          <ul>
+            <li><strong>Interieurreiniging</strong> &mdash; stofzuigen, bekleding, tapijten, kunststof en ruiten</li>
+            <li><strong>Exterieurreiniging</strong> &mdash; handwas, velgen, insecten en vuil van de lak</li>
+            <li><strong>Professionele afwerking</strong> &mdash; polish en bescherming voor een diepe glans</li>
+          </ul>
+          <a class="btn btn--dark btn--block" href="#contact" data-service="Carcleaning">Offerte voor carcleaning</a>
+        </div>
+      </article>
 
-<div class="section-header">
-<h2>Onze Diensten</h2>
-<p>Vakmanschap, correcte prijzen en een persoonlijke aanpak.</p>
-</div>
-
-<div class="service-grid">
-
-<div class="card" id="carcleaning">
-<h3>Carcleaning</h3>
-<ul>
-<li>Interieurreiniging</li>
-<li>Exterieurreiniging</li>
-<li>Professionele afwerking</li>
-<li>Verzorgde uitstraling van uw voertuig</li>
-</ul>
-</div>
-
-<div class="card" id="terras">
-<h3>Terrasreiniging</h3>
-<ul>
-<li>Verwijderen van vuil en mos</li>
-<li>Dieptereiniging</li>
-<li>Groene aanslag verwijderen</li>
-<li>Herstel van frisse uitstraling</li>
-</ul>
-</div>
-
-</div>
-</div>
+      <!-- TERRASREINIGING -->
+      <article class="service service--terras reveal" id="terrasreiniging" data-delay="2">
+        <div class="service__media">
+          <img src="images/terrasreiniging.jpg" alt="Terras met mos en groene aanslag dat door JEVECO gereinigd wordt" loading="lazy" decoding="async">
+          <span class="service__tag">Terrasreiniging</span>
+        </div>
+        <div class="service__body">
+          <h3>Uw terras terug zoals het bedoeld was</h3>
+          <p>Klinkers, tegels, beton of natuursteen: wij halen de aanslag eruit zonder uw terras te beschadigen.</p>
+          <ul>
+            <li><strong>Verwijderen van vuil en mos</strong> &mdash; ook in de voegen en langs de randen</li>
+            <li><strong>Dieptereiniging</strong> &mdash; aangepaste druk en techniek per soort ondergrond</li>
+            <li><strong>Herstel van frisse uitstraling</strong> &mdash; egaal resultaat, netjes opgeruimd achtergelaten</li>
+          </ul>
+          <a class="btn btn--dark btn--block" href="#contact" data-service="Terrasreiniging">Offerte voor terrasreiniging</a>
+        </div>
+      </article>
+    </div>
+  </div>
 </section>
 
-<section class="reveal">
+<!-- ============================ VOOR / NA ============================ -->
+<section class="section section--pine">
+  <div class="shell">
+    <div class="reveal">
+      <p class="eyebrow">Resultaat</p>
+      <h2>Voor en na</h2>
+      <p class="lead">Sleep de schuifknop om het verschil te zien. Dit zijn geen studiofoto's, maar gewoon werk van bij klanten thuis.</p>
+    </div>
 
-<div class="container">
+    <div class="ba-grid">
+      <div class="ba-item reveal" data-delay="1">
+        <h3>Carcleaning &mdash; interieur</h3>
+        <div class="ba" style="--pos:50%">
+          <img src="images/na-auto.jpg" alt="Auto-interieur na reiniging door JEVECO" loading="lazy" decoding="async">
+          <div class="ba__before"><img src="images/voor-auto.jpg" alt="Auto-interieur voor reiniging" loading="lazy" decoding="async"></div>
+          <span class="ba__label ba__label--before">Voor</span>
+          <span class="ba__label ba__label--after">Na</span>
+          <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Vergelijk voor en na: carcleaning interieur">
+          <span class="ba__line"></span>
+          <span class="ba__grip" aria-hidden="true">&#8596;</span>
+        </div>
+      </div>
 
-<div class="section-header">
-<h2>Waarom kiezen voor JEVECO?</h2>
-</div>
-
-<div class="why-grid">
-
-<div class="why-item">Professionele service</div>
-<div class="why-item">Snelle reactie</div>
-<div class="why-item">Correcte prijzen</div>
-<div class="why-item">Kwaliteitsgarantie</div>
-<div class="why-item">Tevreden klanten</div>
-
-</div>
-
-</div>
+      <div class="ba-item reveal" data-delay="2">
+        <h3>Terrasreiniging &mdash; klinkers</h3>
+        <div class="ba" style="--pos:50%">
+          <img src="images/na-terras.jpg" alt="Terras na reiniging door JEVECO" loading="lazy" decoding="async">
+          <div class="ba__before"><img src="images/voor-terras.jpg" alt="Terras met mos en aanslag voor reiniging" loading="lazy" decoding="async"></div>
+          <span class="ba__label ba__label--before">Voor</span>
+          <span class="ba__label ba__label--after">Na</span>
+          <input class="ba__range" type="range" min="0" max="100" value="50" aria-label="Vergelijk voor en na: terrasreiniging">
+          <span class="ba__line"></span>
+          <span class="ba__grip" aria-hidden="true">&#8596;</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section class="gallery reveal">
+<!-- ============================ WAAROM ============================ -->
+<section class="section section--paper">
+  <div class="shell">
+    <div class="reveal">
+      <p class="eyebrow">Waarom JEVECO</p>
+      <h2>Waarom klanten<br>bij ons blijven</h2>
+    </div>
 
-<div class="container">
-
-<div class="section-header">
-<h2>Resultaten Waar We Trots Op Zijn</h2>
-<p>Voeg hier jouw eigen foto's toe vanuit Instagram of uploads.</p>
-</div>
-
-<div class="gallery-grid">
-
-<div class="gallery-item">
-images/foto1.jpg="lazy" alt="JEVECO resultaat" onclick="openLightbox(this.src)">
-</div>
-
-<div class="gallery-item">
-images/foto2.jpg
-</div>
-
-<div class="gallery-item">
-images/foto3.jpgVECO resultaat" onclick="openLightbox(this.src)">
-</div>
-
-<div class="gallery-item">
-images/foto4.jpg="openLightbox(this.src)">
-</div>
-
-<div class="gallery-item">
-images/foto5.jpg
-</div>
-
-<div class="gallery-item">
-images/foto6.jpg" alt="JEVECO resultaat" onclick="openLightbox(this.src)">
-</div>
-
-</div>
-</div>
+    <div class="why">
+      <div class="why__item reveal" data-delay="1">
+        <h3>Professionele service</h3>
+        <p>Het juiste product en de juiste techniek per ondergrond. Wij werken zoals we het bij onszelf thuis zouden doen.</p>
+      </div>
+      <div class="why__item reveal" data-delay="2">
+        <h3>Snelle reactie</h3>
+        <p>U krijgt binnen 24 uur antwoord op uw aanvraag, meestal nog dezelfde dag via WhatsApp.</p>
+      </div>
+      <div class="why__item reveal" data-delay="3">
+        <h3>Correcte prijzen</h3>
+        <p>Een duidelijke prijs vooraf. Geen verrassingen achteraf en geen kosten die er niet bij horen.</p>
+      </div>
+      <div class="why__item reveal" data-delay="4">
+        <h3>Kwaliteitsgarantie</h3>
+        <p>Niet tevreden over een plek? Zeg het ons voor we vertrekken en we werken het af.</p>
+      </div>
+      <div class="why__item reveal" data-delay="4">
+        <h3>Tevreden klanten</h3>
+        <p>Het grootste deel van ons werk komt van klanten die ons doorgeven aan familie, buren en collega's.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<section id="referenties" class="reveal">
+<!-- ============================ GALERIJ ============================ -->
+<section class="section" id="galerij">
+  <div class="shell">
+    <div class="reveal">
+      <p class="eyebrow">Ons werk</p>
+      <h2>Uit de praktijk</h2>
+      <p class="lead">Klik op een foto om ze groot te bekijken.</p>
+    </div>
 
-<div class="container">
-
-<div class="section-header">
-<h2>Wat Klanten Zeggen</h2>
-</div>
-
-<div class="reviews-grid">
-
-<div class="review">
-<div class="stars">★★★★★</div>
-<p>
-"Zeer tevreden over het resultaat. Auto zag er opnieuw als nieuw uit."
-</p>
-<br>
-<strong>Particuliere klant</strong>
-</div>
-
-<div class="review">
-<div class="stars">★★★★★</div>
-<p>
-"Snelle communicatie, correcte prijs en uitstekend werk."
-</p>
-<br>
-<strong>Klant terrasreiniging</strong>
-</div>
-
-<div class="review">
-<div class="stars">★★★★★</div>
-<p>
-"Professionele aanpak en perfect afgewerkt."
-</p>
-<br>
-<strong>Tevreden klant</strong>
-</div>
-
-</div>
-</div>
+    <div class="gallery reveal" id="gallery">
+      <button class="gallery__cell" type="button"><img src="images/galerij-1.jpg" alt="Gepoetste wagen met glanzende lak" loading="lazy" decoding="async"></button>
+      <button class="gallery__cell" type="button"><img src="images/galerij-2.jpg" alt="Gereinigd terras in klinkers" loading="lazy" decoding="async"></button>
+      <button class="gallery__cell" type="button"><img src="images/galerij-3.jpg" alt="Detail van een gereinigd auto-interieur" loading="lazy" decoding="async"></button>
+      <button class="gallery__cell" type="button"><img src="images/galerij-4.jpg" alt="Velgen na reiniging" loading="lazy" decoding="async"></button>
+      <button class="gallery__cell" type="button"><img src="images/galerij-5.jpg" alt="Terras tijdens dieptereiniging" loading="lazy" decoding="async"></button>
+      <button class="gallery__cell" type="button"><img src="images/galerij-6.jpg" alt="Wagen na volledige poetsbeurt" loading="lazy" decoding="async"></button>
+      <button class="gallery__cell" type="button"><img src="images/galerij-7.jpg" alt="Gereinigde terrastegels" loading="lazy" decoding="async"></button>
+      <button class="gallery__cell" type="button"><img src="images/galerij-8.jpg" alt="Afgewerkt interieur van een wagen" loading="lazy" decoding="async"></button>
+    </div>
+  </div>
 </section>
 
-<section class="contact reveal" id="contact">
+<!-- ============================ REFERENTIES ============================ -->
+<section class="section section--paper" id="referenties">
+  <div class="shell">
+    <div class="reveal">
+      <p class="eyebrow">Referenties</p>
+      <h2>Wat klanten zeggen</h2>
+    </div>
 
-<div class="container">
+    <div class="reviews">
+      <article class="review reveal" data-delay="1">
+        <div class="stars" aria-label="5 op 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Mijn wagen stond te koop en zag er echt niet meer uit. Na de beurt van JEVECO leek hij jaren jonger. De koper heeft er niets op af te dingen gehad.</blockquote>
+        <div class="review__who">
+          <span class="review__initial" aria-hidden="true">B</span>
+          <span><span class="review__name">Bart D.</span><span class="review__meta">Carcleaning</span></span>
+        </div>
+      </article>
 
-<div class="section-header">
-<h2>Vraag Uw Offerte Aan</h2>
-</div>
+      <article class="review reveal" data-delay="2">
+        <div class="stars" aria-label="5 op 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Ons terras lag vol groene aanslag na de winter. Op een halve dag was alles proper, ook tussen de voegen. Alles netjes opgeruimd achtergelaten.</blockquote>
+        <div class="review__who">
+          <span class="review__initial" aria-hidden="true">A</span>
+          <span><span class="review__name">An V.</span><span class="review__meta">Terrasreiniging</span></span>
+        </div>
+      </article>
 
-<div class="form-wrapper">
-
-<div class="contact-info">
-
-<h3>Persoonlijke service, zonder gedoe.</h3>
-
-<p>
-Heeft u een wagen die een grondige reiniging nodig heeft?
-Of wilt u uw terras opnieuw laten stralen?
-Vraag vrijblijvend een offerte aan via WhatsApp.
-</p>
-
-<p><strong>Reactie binnen korte tijd</strong></p>
-
-</div>
-
-<div class="form-card">
-
-<form id="quoteForm">
-
-<div class="form-group">
-<label for="naam">Naam</label>
-<input type="text" id="naam" required>
-</div>
-
-<div class="form-group">
-<label for="gsm">GSM nummer</label>
-<input type="tel" id="gsm" required>
-</div>
-
-<div class="form-group">
-<label for="dienst">Dienst</label>
-<select id="dienst" required>
-<option value="">Selecteer</option>
-<option>Carcleaning</option>
-<option>Terrasreiniging</option>
-</select>
-</div>
-
-<div class="form-group" id="sqmField" style="display:none;">
-<label for="sqm">Aantal vierkante meter</label>
-<input type="number" id="sqm">
-</div>
-
-<div class="form-group">
-<label for="opmerking">Opmerking</label>
-<textarea id="opmerking"></textarea>
-</div>
-
-<button type="submit" class="btn" style="width:100%;">
-Verzenden via WhatsApp
-</button>
-
-</form>
-
-</div>
-
-</div>
-</div>
-
+      <article class="review reveal" data-delay="3">
+        <div class="stars" aria-label="5 op 5 sterren">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <blockquote>Snel geantwoord op WhatsApp, prijs op voorhand duidelijk en die is ook zo gebleven. Aangenaam om mee te werken, ik geef ze zeker door.</blockquote>
+        <div class="review__who">
+          <span class="review__initial" aria-hidden="true">K</span>
+          <span><span class="review__name">Kevin M.</span><span class="review__meta">Carcleaning &amp; terras</span></span>
+        </div>
+      </article>
+    </div>
+  </div>
 </section>
 
+<!-- ============================ OFFERTE / CONTACT ============================ -->
+<section class="section section--pine" id="contact">
+  <div class="shell quote">
+
+    <div class="quote__aside reveal">
+      <p class="eyebrow">Offerte</p>
+      <h2>Vertel kort wat u nodig heeft</h2>
+      <p class="lead">Vul de drie velden in en klik op verzenden. Uw aanvraag komt meteen klaar in WhatsApp, u hoeft ze enkel nog te versturen. Wij antwoorden met een prijs.</p>
+
+      <ul class="quote__contactlist">
+        <li><small>Telefoon</small><a href="tel:+324XXXXXXXX">+32 4XX XX XX XX</a></li>
+        <li><small>E-mail</small><a href="mailto:info@jeveco.be">info@jeveco.be</a></li>
+      </ul>
+
+      <img src="images/contact.jpg" alt="JEVECO aan het werk bij een klant" loading="lazy" decoding="async">
+    </div>
+
+    <form class="form reveal" id="offerteForm" data-delay="1" novalidate>
+      <div class="field">
+        <label for="naam">Naam <span class="req" aria-hidden="true">*</span></label>
+        <input type="text" id="naam" name="naam" autocomplete="name" placeholder="Voornaam en naam" required aria-required="true" aria-describedby="err-naam">
+        <p class="error-msg" id="err-naam">Vul uw naam in.</p>
+      </div>
+
+      <div class="field">
+        <label for="gsm">GSM nummer <span class="req" aria-hidden="true">*</span></label>
+        <input type="tel" id="gsm" name="gsm" autocomplete="tel" inputmode="tel" placeholder="0470 12 34 56" required aria-required="true" aria-describedby="err-gsm">
+        <p class="error-msg" id="err-gsm">Vul een geldig gsm nummer in.</p>
+      </div>
+
+      <div class="field">
+        <label for="dienst">Dienst <span class="req" aria-hidden="true">*</span></label>
+        <select id="dienst" name="dienst" required aria-required="true" aria-describedby="err-dienst">
+          <option value="">Maak een keuze</option>
+          <option value="Carcleaning">Carcleaning</option>
+          <option value="Terrasreiniging">Terrasreiniging</option>
+        </select>
+        <p class="error-msg" id="err-dienst">Kies een dienst.</p>
+      </div>
+
+      <div class="field" id="veld-m2">
+        <label for="m2">Aantal vierkante meter <span class="req" aria-hidden="true">*</span></label>
+        <input type="number" id="m2" name="m2" min="1" step="1" inputmode="numeric" placeholder="Bijvoorbeeld 45" aria-describedby="err-m2 hint-m2">
+        <p class="hint" id="hint-m2">Een schatting volstaat: lengte maal breedte van uw terras.</p>
+        <p class="error-msg" id="err-m2">Vul het aantal vierkante meter in.</p>
+      </div>
+
+      <div class="field">
+        <label for="opmerking">Opmerking</label>
+        <textarea id="opmerking" name="opmerking" placeholder="Type wagen, staat van het terras, gewenste periode..."></textarea>
+      </div>
+
+      <button class="btn btn--primary btn--block btn--lg" type="submit">Verzenden via WhatsApp</button>
+      <p class="form__status" id="formStatus" role="status" aria-live="polite"></p>
+      <p class="form__note">Uw gegevens gaan rechtstreeks naar ons en worden nergens anders bewaard.</p>
+    </form>
+
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
 <footer class="footer">
+  <div class="shell">
+    <div class="footer__grid">
+      <div>
+        <a class="brand" href="#top">
+          <img class="brand__logo" src="images/logo.png" alt="JEVECO">
+          <span class="brand__word">Jeveco</span><span class="brand__dot">.</span>
+        </a>
+        <p>Carcleaning en terrasreiniging door een zelfstandige die zijn werk graag doet. Voor particulieren en bedrijven, bij u ter plaatse.</p>
+      </div>
 
-<div class="container">
+      <div>
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="#top">Home</a></li>
+          <li><a href="#carcleaning">Carcleaning</a></li>
+          <li><a href="#terrasreiniging">Terrasreiniging</a></li>
+          <li><a href="#referenties">Referenties</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
 
-<div class="footer-content">
+      <div>
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+324XXXXXXXX">+32 4XX XX XX XX</a></li>
+          <li><a href="mailto:info@jeveco.be">info@jeveco.be</a></li>
+          <li><a href="https://www.instagram.com/jeveco.carcleaning/" target="_blank" rel="noopener">Instagram</a></li>
+          <li style="margin-top:.6rem"><a class="btn btn--primary" id="footerWa" href="#contact">Stuur een WhatsApp</a></li>
+        </ul>
+      </div>
+    </div>
 
-<div>
-logo.png
-<p>
-JEVECO staat voor grondige reiniging, correcte prijzen en een persoonlijke aanpak.
-</p>
-</div>
-
-<div>
-<p><strong>Telefoon</strong><br>+32 xxx xx xx xx</p>
-<br>
-<p><strong>E-mail</strong><br>info@jeveco.be</p>
-<br>
-#="footerWhatsapp">WhatsApp</a>
-</div>
-
-</div>
-
-<div class="copyright">
-© 2026 JEVECO. Alle rechten voorbehouden.
-</div>
-
-</div>
-
+    <div class="footer__bottom">
+      <span>&copy; <span id="jaar">2026</span> JEVECO. Alle rechten voorbehouden.</span>
+      <span>BTW BE 0XXX.XXX.XXX</span>
+    </div>
+  </div>
 </footer>
 
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+<a class="fab" id="fab" href="#contact" aria-label="Naar het offerteformulier">Offerte aanvragen</a>
 
+<!-- ============================ LIGHTBOX ============================ -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto bekijken">
+  <button class="lightbox__btn lightbox__close" id="lbClose" aria-label="Sluiten">&times;</button>
+  <button class="lightbox__btn lightbox__prev" id="lbPrev" aria-label="Vorige foto">&#8249;</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lightbox__btn lightbox__next" id="lbNext" aria-label="Volgende foto">&#8250;</button>
+  <span class="lightbox__count" id="lbCount"></span>
 </div>
 
 <script>
+/* ============================================================
+   >>> HIER PAST U HET WHATSAPP NUMMER AAN <<<
+   Formaat: landcode zonder + en zonder spaties.
+   Voorbeeld voor 0470 12 34 56  ->  "32470123456"
+   ============================================================ */
+const whatsappNumber = "32472177351";
 
-const whatsappNumber = "324XXXXXXXX";
+(function () {
+  "use strict";
 
-function toggleMenu(){
-    document.getElementById("menu").classList.toggle("active");
-}
+  /* ---------- Jaartal ---------- */
+  document.getElementById("jaar").textContent = new Date().getFullYear();
 
-document.getElementById("dienst").addEventListener("change", function(){
-    
-    const sqmField = document.getElementById("sqmField");
+  /* ---------- Logo: toon afbeelding als images/logo.png bestaat ---------- */
+  document.querySelectorAll(".brand__logo").forEach(function (logo) {
+    logo.addEventListener("load", function () { logo.closest(".brand").classList.add("has-logo"); });
+    logo.addEventListener("error", function () { logo.remove(); });
+  });
 
-    if(this.value === "Terrasreiniging"){
-        sqmField.style.display = "block";
-    } else {
-        sqmField.style.display = "none";
-    }
-});
+  /* ---------- Nette placeholder wanneer een foto ontbreekt ---------- */
+  document.querySelectorAll("img:not(.brand__logo)").forEach(function (img) {
+    img.addEventListener("error", function () {
+      var box = document.createElement("div");
+      box.className = "img-missing";
+      box.setAttribute("role", "img");
+      box.setAttribute("aria-label", img.alt || "Foto volgt");
+      box.textContent = (img.getAttribute("src") || "").split("/").pop();
+      Object.assign(box.style, { width: "100%", height: "100%", minHeight: "180px" });
+      if (img.parentNode) img.parentNode.replaceChild(box, img);
+    });
+  });
 
-document.getElementById("quoteForm").addEventListener("submit", function(e){
+  /* ---------- Mobiel menu ---------- */
+  var burger = document.getElementById("burger");
+  var nav = document.getElementById("nav");
 
+  function closeNav() {
+    nav.classList.remove("is-open");
+    burger.setAttribute("aria-expanded", "false");
+    burger.setAttribute("aria-label", "Menu openen");
+  }
+  burger.addEventListener("click", function () {
+    var open = nav.classList.toggle("is-open");
+    burger.setAttribute("aria-expanded", String(open));
+    burger.setAttribute("aria-label", open ? "Menu sluiten" : "Menu openen");
+  });
+  nav.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", closeNav); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeNav(); });
+
+  /* ---------- Sticky header schaduw ---------- */
+  var header = document.querySelector(".header");
+  var fab = document.getElementById("fab");
+  function onScroll() {
+    var y = window.scrollY;
+    header.classList.toggle("is-stuck", y > 12);
+    fab.classList.toggle("is-visible", y > 700);
+  }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  /* ---------- Actief menu-item ---------- */
+  var sections = ["carcleaning", "terrasreiniging", "referenties", "contact"]
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+  var navLinks = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+
+  if ("IntersectionObserver" in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        navLinks.forEach(function (l) {
+          l.classList.toggle("is-active", l.getAttribute("href") === "#" + en.target.id);
+        });
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    sections.forEach(function (s) { spy.observe(s); });
+
+    /* ---------- Scroll-animaties ---------- */
+    var revealer = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add("is-in"); obs.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+    document.querySelectorAll(".reveal").forEach(function (el) { revealer.observe(el); });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("is-in"); });
+  }
+
+  /* ---------- Voor / na schuifknoppen ---------- */
+  document.querySelectorAll(".ba").forEach(function (ba) {
+    var range = ba.querySelector(".ba__range");
+    function apply() { ba.style.setProperty("--pos", range.value + "%"); }
+    range.addEventListener("input", apply);
+    apply();
+  });
+
+  /* ---------- Galerij + lightbox ---------- */
+  var cells = Array.prototype.slice.call(document.querySelectorAll(".gallery__cell"));
+  var lb = document.getElementById("lightbox");
+  var lbImg = document.getElementById("lbImg");
+  var lbCount = document.getElementById("lbCount");
+  var index = 0;
+  var lastFocus = null;
+
+  function show(i) {
+    if (!cells.length) return;
+    index = (i + cells.length) % cells.length;
+    var src = cells[index].querySelector("img");
+    if (!src) return;
+    lbImg.src = src.getAttribute("src");
+    lbImg.alt = src.alt || "";
+    lbCount.textContent = (index + 1) + " / " + cells.length;
+  }
+  function openLb(i) {
+    lastFocus = document.activeElement;
+    show(i);
+    lb.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+    document.getElementById("lbClose").focus();
+  }
+  function closeLb() {
+    lb.classList.remove("is-open");
+    document.body.style.overflow = "";
+    if (lastFocus) lastFocus.focus();
+  }
+
+  cells.forEach(function (c, i) { c.addEventListener("click", function () { openLb(i); }); });
+  document.getElementById("lbClose").addEventListener("click", closeLb);
+  document.getElementById("lbPrev").addEventListener("click", function () { show(index - 1); });
+  document.getElementById("lbNext").addEventListener("click", function () { show(index + 1); });
+  lb.addEventListener("click", function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener("keydown", function (e) {
+    if (!lb.classList.contains("is-open")) return;
+    if (e.key === "Escape") closeLb();
+    if (e.key === "ArrowLeft") show(index - 1);
+    if (e.key === "ArrowRight") show(index + 1);
+  });
+
+  /* ---------- Formulier ---------- */
+  var form = document.getElementById("offerteForm");
+  var dienst = document.getElementById("dienst");
+  var veldM2 = document.getElementById("veld-m2");
+  var m2 = document.getElementById("m2");
+  var status = document.getElementById("formStatus");
+
+  function toggleM2() {
+    var terras = dienst.value === "Terrasreiniging";
+    veldM2.classList.toggle("is-visible", terras);
+    m2.required = terras;
+    m2.setAttribute("aria-required", String(terras));
+    if (!terras) { m2.value = ""; veldM2.classList.remove("is-error"); }
+  }
+  dienst.addEventListener("change", toggleM2);
+  toggleM2();
+
+  /* Knoppen bij de diensten vullen de keuze alvast in */
+  document.querySelectorAll("[data-service]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      dienst.value = btn.getAttribute("data-service");
+      toggleM2();
+      setTimeout(function () { document.getElementById("naam").focus({ preventScroll: true }); }, 700);
+    });
+  });
+
+  function markError(el, on) {
+    var field = el.closest(".field");
+    if (field) field.classList.toggle("is-error", on);
+    return !on;
+  }
+
+  form.addEventListener("submit", function (e) {
     e.preventDefault();
+    status.textContent = "";
 
-    const naam = document.getElementById("naam").value;
-    const gsm = document.getElementById("gsm").value;
-    const dienst = document.getElementById("dienst").value;
-    const sqm = document.getElementById("sqm").value;
-    const opmerking = document.getElementById("opmerking").value;
+    var naam = document.getElementById("naam");
+    var gsm = document.getElementById("gsm");
+    var opmerking = document.getElementById("opmerking");
 
-    let message =
-`Nieuwe offerte aanvraag JEVECO
-
-Naam: ${naam}
-GSM: ${gsm}
-
-Dienst: ${dienst}`;
-
-    if(dienst === "Terrasreiniging" && sqm){
-        message += `
-
-Vierkante meter: ${sqm} m²`;
+    var ok = true;
+    ok = markError(naam, naam.value.trim().length < 2) && ok;
+    ok = markError(gsm, gsm.value.replace(/[^0-9]/g, "").length < 8) && ok;
+    ok = markError(dienst, dienst.value === "") && ok;
+    if (dienst.value === "Terrasreiniging") {
+      ok = markError(m2, !(parseFloat(m2.value) > 0)) && ok;
     }
 
-    message += `
+    if (!ok) {
+      status.style.color = "#C0392B";
+      status.textContent = "Vul de aangeduide velden nog even aan.";
+      var first = form.querySelector(".field.is-error input, .field.is-error select");
+      if (first) first.focus();
+      return;
+    }
 
-Opmerking:
-${opmerking}`;
+    /* Bericht opbouwen */
+    var lijnen = [];
+    lijnen.push("Nieuwe offerte aanvraag JEVECO");
+    lijnen.push("");
+    lijnen.push("Naam: " + naam.value.trim());
+    lijnen.push("GSM: " + gsm.value.trim());
+    lijnen.push("");
+    lijnen.push("Dienst: " + dienst.value);
+    if (m2.value.trim() !== "") {
+      lijnen.push("");
+      lijnen.push("Vierkante meter: " + m2.value.trim() + " m2");
+    }
+    lijnen.push("");
+    lijnen.push("Opmerking: " + (opmerking.value.trim() || "geen"));
 
-    const url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    var url = "https://wa.me/" + whatsappNumber + "?text=" + encodeURIComponent(lijnen.join("\n"));
 
-    window.open(url, "_blank");
+    status.style.color = "";
+    status.textContent = "WhatsApp wordt geopend met uw aanvraag.";
 
-});
+    var venster = window.open(url, "_blank", "noopener");
+    if (!venster) window.location.href = url;
+  });
 
-document.getElementById("footerWhatsapp").addEventListener("click", function(e){
+  /* Fout wissen zodra de bezoeker verbetert */
+  form.querySelectorAll("input, select").forEach(function (el) {
+    el.addEventListener("input", function () { markError(el, false); });
+    el.addEventListener("change", function () { markError(el, false); });
+  });
 
-    e.preventDefault();
-
-    window.open(
-        `https://wa.me/${whatsappNumber}`,
-        "_blank"
-    );
-});
-
-function openLightbox(src){
-    document.getElementById("lightbox").style.display="flex";
-    document.getElementById("lightboxImg").src=src;
-}
-
-function closeLightbox(){
-    document.getElementById("lightbox").style.display="none";
-}
-
-const observer = new IntersectionObserver(entries => {
-
-entries.forEach(entry => {
-
-if(entry.isIntersecting){
-entry.target.classList.add("active");
-}
-
-});
-
-},{threshold:0.15});
-
-document.querySelectorAll('.reveal').forEach(el=>{
-observer.observe(el);
-});
-
+  /* Footerknop stuurt naar het formulier en zet de focus */
+  document.getElementById("footerWa").addEventListener("click", function () {
+    setTimeout(function () { document.getElementById("naam").focus({ preventScroll: true }); }, 700);
+  });
+})();
 </script>
 
+<!-- SEO: gestructureerde gegevens -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "name":"JEVECO",
+  "description":"Carcleaning en terrasreiniging voor particulieren en bedrijven in Belgie.",
+  "image":"images/hero.jpg",
+  "telephone":"+32 472 17 73 51",
+  "email":"info@jeveco.be",
+  "url":"https://www.jeveco.be/",
+  "priceRange":"$$",
+  "address":{"@type":"PostalAddress","addressCountry":"BE"},
+  "sameAs":["https://www.instagram.com/jeveco.carcleaning/"],
+  "makesOffer":[
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Carcleaning","description":"Interieurreiniging, exterieurreiniging en professionele afwerking."}},
+    {"@type":"Offer","itemOffered":{"@type":"Service","name":"Terrasreiniging","description":"Verwijderen van vuil en mos, dieptereiniging en herstel van een frisse uitstraling."}}
+  ]
+}
+</script>
 </body>
 </html>
