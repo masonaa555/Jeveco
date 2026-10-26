@@ -134,6 +134,12 @@ p{margin:0 0 1rem}
 }
 .nav a:hover{color:var(--pine);background:var(--paper)}
 .nav a.is-active{color:var(--pine);font-weight:600}
+
+/* Offerteknop in navigatie verbergen op desktop */
+.nav .btn{
+  display:none;
+}
+
 .header .btn{padding:.75rem 1.35rem;font-size:.95rem;min-height:44px}
 
 .burger{display:none;background:none;border:1px solid var(--line);border-radius:10px;width:46px;height:46px;cursor:pointer;padding:0;place-items:center}
@@ -152,7 +158,11 @@ p{margin:0 0 1rem}
   }
   .nav.is-open{transform:translateY(0)}
   .nav a{padding:1rem .4rem;border-bottom:1px solid var(--line);border-radius:0;font-size:1.05rem}
-  .nav .btn{margin-top:1rem;border-bottom:0}
+  .nav .btn{
+  display:inline-flex;
+  margin-top:1rem;
+  border-bottom:0;
+}
   .header__cta{display:none}
 }
 
@@ -755,17 +765,44 @@ const whatsappNumber = "32472177351";
   });
 
   /* ---------- Nette placeholder wanneer een foto ontbreekt ---------- */
-  document.querySelectorAll("img:not(.brand__logo)").forEach(function (img) {
-    img.addEventListener("error", function () {
-      var box = document.createElement("div");
-      box.className = "img-missing";
-      box.setAttribute("role", "img");
-      box.setAttribute("aria-label", img.alt || "Foto volgt");
-      box.textContent = (img.getAttribute("src") || "").split("/").pop();
-      Object.assign(box.style, { width: "100%", height: "100%", minHeight: "180px" });
-      if (img.parentNode) img.parentNode.replaceChild(box, img);
+ document.querySelectorAll("img:not(.brand__logo)").forEach(function (img) {
+  img.addEventListener("error", function () {
+
+    // Eerste fout: probeer de afbeelding 1x opnieuw te laden
+    if (!img.dataset.retried) {
+      img.dataset.retried = "true";
+
+      var originalSrc = img.getAttribute("src");
+
+      if (originalSrc) {
+        var separator = originalSrc.includes("?") ? "&" : "?";
+        img.src = originalSrc + separator + "retry=" + Date.now();
+        return;
+      }
+    }
+
+    // Tweede fout: toon de bestaande placeholder
+    var box = document.createElement("div");
+    box.className = "img-missing";
+    box.setAttribute("role", "img");
+    box.setAttribute("aria-label", img.alt || "Foto volgt");
+
+    box.textContent = (img.getAttribute("src") || "")
+      .split("?")[0]
+      .split("/")
+      .pop();
+
+    Object.assign(box.style, {
+      width: "100%",
+      height: "100%",
+      minHeight: "180px"
     });
+
+    if (img.parentNode) {
+      img.parentNode.replaceChild(box, img);
+    }
   });
+});
 
   /* ---------- Mobiel menu ---------- */
   var burger = document.getElementById("burger");
